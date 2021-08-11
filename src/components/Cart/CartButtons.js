@@ -5,9 +5,23 @@ import styled from "styled-components";
 import { useProductsContext } from "../../context/products_context";
 import { useCartContext } from "../../context/cart_context";
 import { useUserContext } from "../../context/user_context";
+import classes from "./CartButtons.module.css";
 
-const CartButtons = () => {
-  return <h4>cart buttons </h4>;
+const CartButtons = (props) => {
+  return (
+    <div className={`${classes["cart-buttons"]} ${props.className}`}>
+      <Link to="/cart" className={classes["cart-btn"]}>
+        Cart
+        <span className={classes["cart-container"]}>
+          <FaShoppingCart />
+          <span className={classes["cart-value"]}>12</span>
+        </span>
+      </Link>
+      <button type="button" className={classes["auth-btn"]}>
+        Login <FaUserPlus />
+      </button>
+    </div>
+  );
 };
 
 // const Wrapper = styled.div`

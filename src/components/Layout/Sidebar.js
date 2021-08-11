@@ -1,15 +1,40 @@
 import React from "react";
-import logo from "../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
-import { useProductsContext } from "../../context/products_context";
 import { FaTimes } from "react-icons/fa";
 import { links } from "../../utils/constants";
-import styled from "styled-components";
 import CartButtons from "../Cart/CartButtons";
-import { useUserContext } from "../../context/user_context";
+import classes from "./Sidebar.module.css";
 
-const Sidebar = () => {
-  return <h4>sidebar</h4>;
+const Sidebar = (props) => {
+  const asideClasses = [
+    `${classes.sidebar}`,
+    props.showSidebar ? `${classes["show-sidebar"]}` : "",
+  ].join(" ");
+
+  return (
+    <div className={classes["sidebar-wrapper"]}>
+      <aside className={asideClasses}>
+        <div className={classes["sidebar-header"]}>
+          <img src={logo} className={classes.logo} alt="comfy sloth" />
+          <button className={classes["close-btn"]} type="button">
+            <FaTimes onClick={props.closeSidebar} />
+          </button>
+        </div>
+        <ul className={classes.links}>
+          {links.map(({ id, text, url }) => (
+            <li key={id}>
+              <Link to={url}>{text}</Link>
+            </li>
+          ))}
+          <li>
+            <Link to="/checkout">checkout</Link>
+          </li>
+        </ul>
+        <CartButtons />
+      </aside>
+    </div>
+  );
 };
 
 // const SidebarContainer = styled.div`

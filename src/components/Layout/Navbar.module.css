@@ -1,4 +1,4 @@
-.navbar {
+.nav {
   height: 5rem;
   display: flex;
   align-items: center;
@@ -35,6 +35,9 @@
   display: none;
 }
 @media (min-width: 992px) {
+  .cart-btn-wrapper {
+    display: grid;
+  }
   .nav-toggle {
     display: none;
   }
@@ -59,8 +62,5 @@
   }
   .nav-links a:hover {
     border-bottom: 2px solid var(--clr-primary-7);
-  }
-  .cart-btn-wrapper {
-    display: grid;
   }
 }
