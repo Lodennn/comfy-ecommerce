@@ -2,14 +2,14 @@
   display: grid;
   gap: 4rem;
 }
-img {
+.about-page img {
   width: 100%;
   display: block;
   border-radius: var(--radius);
   height: 500px;
   object-fit: cover;
 }
-p {
+.about-page p {
   line-height: 2;
   max-width: 45em;
   margin: 0 auto;
@@ -25,5 +25,10 @@ p {
 @media (min-width: 992px) {
   .about-page {
     grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 992px) {
+  .about-page p {
+    margin: 1rem 0 0 0;
   }
 }
