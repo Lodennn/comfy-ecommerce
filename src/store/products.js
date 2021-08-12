@@ -1,22 +1,60 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-  { id: "p1", name: "product1", price: "200" },
-  { id: "p2", name: "product2", price: "400" },
-  { id: "p3", name: "product3", price: "600" },
-  { id: "p4", name: "product4", price: "800" },
-];
+const initialState = {
+  products: [],
+  httpData: {},
+  featuredProducts: [],
+};
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addProduct(action, state) {
-      // state.push(action.payload);
+    addProducts(state, action) {
+      const featuredProductsArray = action.payload.filter(
+        (product) => product.featured === true
+      );
+      state.products = action.payload;
+      state.featuredProducts = featuredProductsArray;
+    },
+    requestStatus(state, action) {
+      state.httpData = {
+        isLoading: action.payload.isLoading,
+        error: action.payload.error,
+      };
     },
   },
 });
 
 export const productsActions = productsSlice.actions;
+
+// React Thunk
+export const fetchProductsData = () => async (dispatch) => {
+  dispatch(productsActions.requestStatus({ isLoading: true, error: null }));
+  const sendRequest = async () => {
+    try {
+      const response = await fetch(
+        "https://course-api.com/react-store-products"
+      );
+      if (!response) throw new Error("Something went wrong!");
+      dispatch(
+        productsActions.requestStatus({ isLoading: false, error: null })
+      );
+      const data = await response.json();
+      return data;
+    } catch (err) {
+      throw err;
+    }
+  };
+  sendRequest()
+    .then((data) => {
+      dispatch(productsActions.addProducts(data));
+    })
+    .catch((err) =>
+      dispatch(
+        productsActions.requestStatus({ isLoading: true, error: err.message })
+      )
+    );
+};
 
 export default productsSlice.reducer;

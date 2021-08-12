@@ -10,8 +10,15 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProductsPage from "./pages/ProductsPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import ErrorPage from "./pages/ErrorPage";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProductsData } from "./store/products";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProductsData());
+  }, [dispatch]);
   return (
     <Fragment>
       <Navbar />
