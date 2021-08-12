@@ -6,9 +6,8 @@ const sidebarSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
-    toggleSidebar(state, action) {
-      console.log(state);
-      return (state = !state);
+    toggleSidebar(state, _) {
+      return !state;
     },
   },
 });

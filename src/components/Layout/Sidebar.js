@@ -10,6 +10,8 @@ import classes from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar);
+  console.log(isSidebarOpen);
+
   const dispatch = useDispatch();
   const asideClasses = [
     `${classes.sidebar}`,
@@ -32,11 +34,15 @@ const Sidebar = () => {
         <ul className={classes.links}>
           {links.map(({ id, text, url }) => (
             <li key={id}>
-              <Link to={url}>{text}</Link>
+              <Link to={url} onClick={closeSidebar}>
+                {text}
+              </Link>
             </li>
           ))}
           <li>
-            <Link to="/checkout">checkout</Link>
+            <Link to="/checkout" onClick={closeSidebar}>
+              checkout
+            </Link>
           </li>
         </ul>
         <CartButtons />

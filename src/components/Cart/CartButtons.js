@@ -1,16 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { sidebarActions } from "../../store/sidebar";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { useProductsContext } from "../../context/products_context";
-import { useCartContext } from "../../context/cart_context";
-import { useUserContext } from "../../context/user_context";
 import classes from "./CartButtons.module.css";
 
 const CartButtons = (props) => {
+  const dispatch = useDispatch();
+  const closeSidebar = () => {
+    dispatch(sidebarActions.toggleSidebar());
+  };
   return (
     <div className={`${classes["cart-buttons"]} ${props.className}`}>
-      <Link to="/cart" className={classes["cart-btn"]}>
+      <Link to="/cart" className={classes["cart-btn"]} onClick={closeSidebar}>
         Cart
         <span className={classes["cart-container"]}>
           <FaShoppingCart />

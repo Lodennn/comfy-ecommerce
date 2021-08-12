@@ -6,13 +6,11 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../../utils/constants";
 import CartButtons from "../Cart/CartButtons";
-import { useProductsContext } from "../../context/products_context";
-import { useUserContext } from "../../context/user_context";
 import classes from "./Navbar.module.css";
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const openSidebar = () => {
+  const toggleSidebar = () => {
     dispatch(sidebarActions.toggleSidebar());
   };
   return (
@@ -23,7 +21,7 @@ const Nav = () => {
             <img src={logo} alt="comfy sloth" />
           </Link>
           <button type="button" className={classes["nav-toggle"]}>
-            <FaBars onClick={openSidebar} />
+            <FaBars onClick={toggleSidebar} />
           </button>
         </div>
         <ul className={classes["nav-links"]}>
