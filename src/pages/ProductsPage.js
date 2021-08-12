@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import ProductList from "../components/Products/ProductList";
 
 const ProductsPage = () => {
-  return <h4>products page</h4>;
+  return <ProductList />;
 };
 
 // const Wrapper = styled.div`

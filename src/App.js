@@ -12,17 +12,10 @@ import SingleProductPage from "./pages/SingleProductPage";
 import ErrorPage from "./pages/ErrorPage";
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const toggleSidebar = () => {
-    setShowSidebar((prevState) => !prevState);
-  };
-  const closeSidebar = () => {
-    setShowSidebar(false);
-  };
   return (
     <Fragment>
-      <Navbar onToggleSidebar={toggleSidebar} />
-      <Sidebar showSidebar={showSidebar} closeSidebar={closeSidebar} />
+      <Navbar />
+      <Sidebar />
       <Switch>
         <Route path="/" exact>
           <HomePage />

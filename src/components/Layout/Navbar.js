@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { sidebarActions } from "../../store/sidebar";
 import logo from "../../assets/logo.svg";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -8,7 +10,11 @@ import { useProductsContext } from "../../context/products_context";
 import { useUserContext } from "../../context/user_context";
 import classes from "./Navbar.module.css";
 
-const Nav = (props) => {
+const Nav = () => {
+  const dispatch = useDispatch();
+  const openSidebar = () => {
+    dispatch(sidebarActions.toggleSidebar());
+  };
   return (
     <nav className={classes.nav}>
       <div className={classes["nav-center"]}>
@@ -17,7 +23,7 @@ const Nav = (props) => {
             <img src={logo} alt="comfy sloth" />
           </Link>
           <button type="button" className={classes["nav-toggle"]}>
-            <FaBars onClick={props.onToggleSidebar} />
+            <FaBars onClick={openSidebar} />
           </button>
         </div>
         <ul className={classes["nav-links"]}>
