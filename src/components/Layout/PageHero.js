@@ -7,7 +7,8 @@ const PageHero = (props) => {
     <section className={classes["page-hero"]}>
       <div className="section-center">
         <h3>
-          <Link to="/">Home</Link>/ {props.title}
+          <Link to="/">Home</Link>/
+          {props.product && <Link to="/products">Products</Link>}/ {props.title}
         </h3>
       </div>
     </section>

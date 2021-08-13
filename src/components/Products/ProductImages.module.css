@@ -1,7 +1,7 @@
 .main {
   height: 600px;
 }
-img {
+.main img {
   width: 100%;
   display: block;
   border-radius: var(--radius);
