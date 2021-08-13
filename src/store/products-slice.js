@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { productsUrl } from "../utils/constants";
 
 const initialState = {
   products: [],
-  httpData: {},
   featuredProducts: [],
+  httpData: {},
 };
 
 const productsSlice = createSlice({
@@ -28,14 +29,12 @@ const productsSlice = createSlice({
 
 export const productsActions = productsSlice.actions;
 
-// React Thunk
+// React Thunk - Fetching All Products
 export const fetchProductsData = () => async (dispatch) => {
   dispatch(productsActions.requestStatus({ isLoading: true, error: null }));
   const sendRequest = async () => {
     try {
-      const response = await fetch(
-        "https://course-api.com/react-store-productss"
-      );
+      const response = await fetch(`${productsUrl}`);
       if (!response) throw new Error("Something went wrong!");
       dispatch(
         productsActions.requestStatus({ isLoading: false, error: null })

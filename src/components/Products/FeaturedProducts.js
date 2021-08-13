@@ -5,7 +5,7 @@ import Error from "../UI/Error";
 import Loading from "../UI/Loading";
 import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsData } from "../../store/products";
+import { fetchProductsData } from "../../store/products-slice";
 import classes from "./FeaturedProducts.module.css";
 
 const FeaturedProducts = () => {

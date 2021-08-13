@@ -16,7 +16,7 @@ const Product = (props) => {
       </div>
       <footer>
         <h5>{props.name}</h5>
-        <p>${props.price}</p>
+        <p>{formatPrice(props.price)}</p>
       </footer>
     </article>
   );

@@ -6,8 +6,20 @@ import { formatPrice } from "../utils/helpers";
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { fetchSingleProductData } from "../store/singleProduct-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 const SingleProductPage = () => {
+  const { productId } = useParams();
+
+  const dispatch = useDispatch();
+
+  const singleProduct = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fetchSingleProductData(productId));
+  }, [productId]);
+
   return <h4>single product page</h4>;
 };
 
