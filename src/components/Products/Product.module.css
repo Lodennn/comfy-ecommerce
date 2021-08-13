@@ -46,6 +46,7 @@ footer h5,
 footer p {
   margin-bottom: 0;
   font-weight: 400;
+  color: var(--clr-grey-1);
 }
 
 footer p {

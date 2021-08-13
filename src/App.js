@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
 import Sidebar from "./components/Layout/Sidebar";
@@ -10,15 +10,9 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProductsPage from "./pages/ProductsPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import ErrorPage from "./pages/ErrorPage";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchProductsData } from "./store/products";
+import FeaturedProducts from "./components/Products/FeaturedProducts";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchProductsData());
-  }, [dispatch]);
   return (
     <Fragment>
       <Navbar />

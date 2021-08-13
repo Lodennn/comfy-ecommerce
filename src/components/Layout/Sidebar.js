@@ -10,7 +10,6 @@ import classes from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar);
-  console.log(isSidebarOpen);
 
   const dispatch = useDispatch();
   const asideClasses = [

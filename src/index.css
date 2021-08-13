@@ -187,15 +187,16 @@ p {
   background: var(--clr-primary-7);
 }
 .title {
-  /* text-align: center; */
+  text-align: center;
+  margin-bottom: 2rem;
 }
 .title .underline {
   width: 6rem;
   height: 0.25rem;
   background: #49a6e9;
   background: var(--clr-primary-5);
-  /* margin-left: auto;
-  margin-right: auto; */
+  margin-left: auto;
+  margin-right: auto;
 }
 .page-100 {
   min-height: calc(100vh - 10rem);

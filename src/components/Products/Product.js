@@ -3,9 +3,23 @@ import styled from "styled-components";
 import { formatPrice } from "../../utils/helpers";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import classes from "./Product.module.css";
 
-const Product = () => {
-  return <h4>product</h4>;
+const Product = (props) => {
+  return (
+    <article>
+      <div className={classes.container}>
+        <img src={props.image} alt={props.name} />
+        <Link to={`/products/${props.id}`} className={classes.link}>
+          <FaSearch />
+        </Link>
+      </div>
+      <footer>
+        <h5>{props.name}</h5>
+        <p>${props.price}</p>
+      </footer>
+    </article>
+  );
 };
 
 // const Wrapper = styled.article`

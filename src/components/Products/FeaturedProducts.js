@@ -1,13 +1,44 @@
-import React from "react";
-import { useProductsContext } from "../../context/products_context";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Error from "../UI/Error";
 import Loading from "../UI/Loading";
 import Product from "./Product";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductsData } from "../../store/products";
+import classes from "./FeaturedProducts.module.css";
 
 const FeaturedProducts = () => {
-  return <h4>featured products</h4>;
+  const {
+    featuredProducts,
+    httpData: { isLoading, error },
+  } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProductsData());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
+  return (
+    <section className={`section ${classes["featured-product"]}`}>
+      <div className="title">
+        <h2>featured products</h2>
+        <div className="underline"></div>
+      </div>
+      <div className={`section-center ${classes.featured}`}>
+        {featuredProducts.slice(0, 3).map((product) => {
+          return <Product key={product.id} {...product} />;
+        })}
+      </div>
+    </section>
+  );
 };
 
 // const Wrapper = styled.section`

@@ -34,7 +34,7 @@ export const fetchProductsData = () => async (dispatch) => {
   const sendRequest = async () => {
     try {
       const response = await fetch(
-        "https://course-api.com/react-store-products"
+        "https://course-api.com/react-store-productss"
       );
       if (!response) throw new Error("Something went wrong!");
       dispatch(
@@ -52,7 +52,7 @@ export const fetchProductsData = () => async (dispatch) => {
     })
     .catch((err) =>
       dispatch(
-        productsActions.requestStatus({ isLoading: true, error: err.message })
+        productsActions.requestStatus({ isLoading: false, error: err.message })
       )
     );
 };
