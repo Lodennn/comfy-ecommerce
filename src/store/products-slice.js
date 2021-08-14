@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { productsUrl } from "../utils/constants";
+import { filterActions } from "./filter-slice";
 
 const initialState = {
   products: [],
@@ -48,6 +49,7 @@ export const fetchProductsData = () => async (dispatch) => {
   sendRequest()
     .then((data) => {
       dispatch(productsActions.addProducts(data));
+      dispatch(filterActions.getAllProducts(data));
     })
     .catch((err) =>
       dispatch(

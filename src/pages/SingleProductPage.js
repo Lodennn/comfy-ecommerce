@@ -23,19 +23,24 @@ const SingleProductPage = () => {
     product,
     httpData: { isLoading, error },
   } = useSelector((state) => state.product);
-
+  console.log("product page", product.images);
   useEffect(() => {
     dispatch(fetchSingleProductData(productId));
   }, [productId]);
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        history.push("/");
+      }, 3000);
+    }
+  }, [error]);
 
   if (isLoading) {
     return <Loading />;
   }
 
   if (error) {
-    setTimeout(() => {
-      history.push("/");
-    }, 3000);
     return <Error />;
   }
 
@@ -47,7 +52,8 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className={classes["product-center"]}>
-          <ProductImages images={product.images} />
+          {product.images && <ProductImages images={product.images} />}
+
           <section className="content">
             <h2>{product.name}</h2>
             <Stars stars={product.stars} reviews={product.reviews} />

@@ -5,7 +5,6 @@ import Error from "../UI/Error";
 import Loading from "../UI/Loading";
 import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsData } from "../../store/products-slice";
 import classes from "./FeaturedProducts.module.css";
 
 const FeaturedProducts = () => {
@@ -13,11 +12,6 @@ const FeaturedProducts = () => {
     featuredProducts,
     httpData: { isLoading, error },
   } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProductsData());
-  }, [dispatch]);
 
   if (isLoading) {
     return <Loading />;

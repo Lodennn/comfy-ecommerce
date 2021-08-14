@@ -52,7 +52,7 @@ const AddToCart = (props) => {
           })}
         </div>
       </div>
-      <div className={classes["btn-container"]}>
+      <div className="btn-container">
         <AmountButtons
           amount={amount}
           increase={increase}

@@ -18,12 +18,13 @@
 }
 .info span {
   font-weight: 700;
+  color: var(--clr-primary-1);
 }
 
 @media (min-width: 992px) {
   .product-center {
     grid-template-columns: 1fr 1fr;
-    align-items: center;
+    /* align-items: center; */
   }
   .price {
     font-size: 1.25rem;

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
 import Sidebar from "./components/Layout/Sidebar";
 import Footer from "./components/Layout/Footer";
@@ -11,10 +11,19 @@ import ProductsPage from "./pages/ProductsPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import ErrorPage from "./pages/ErrorPage";
 import FeaturedProducts from "./components/Products/FeaturedProducts";
+import { filterActions } from "./store/filter-slice";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProductsData } from "./store/products-slice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProductsData());
+  }, [dispatch]);
+
   return (
-    <Fragment>
+    <BrowserRouter>
       <Navbar />
       <Sidebar />
       <Switch>
@@ -41,7 +50,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
-    </Fragment>
+    </BrowserRouter>
   );
 }
 

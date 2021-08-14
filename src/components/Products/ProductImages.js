@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import classes from "./ProductImages.module.css";
 
-const ProductImages = ({ images = [{ url: "" }] }) => {
-  const [mainImage, setMainImage] = useState("");
+const ProductImages = ({ images = [] }) => {
+  const [mainImage, setMainImage] = useState(images[0]);
+  console.log(mainImage);
 
   const getImageSrc = (img) => {
     setMainImage(img);
@@ -33,6 +33,7 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
       </div>
     </section>
   );
+  return "images";
 };
 
 // const Wrapper = styled.section`

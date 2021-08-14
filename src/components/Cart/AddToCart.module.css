@@ -3,13 +3,14 @@
 }
 .colors {
   display: grid;
-  grid-template-columns: 125px 1fr;
+  grid-template-columns: 100px 1fr;
   align-items: center;
   margin-bottom: 1rem;
 }
-.color span {
+.colors span {
   text-transform: capitalize;
   font-weight: 700;
+  color: var(--clr-primary-1);
 }
 .colors div {
   display: flex;

@@ -3,7 +3,7 @@
   row-gap: 3rem;
 }
 
-img {
+.list-view img {
   width: 100%;
   display: block;
   width: 300px;
@@ -12,23 +12,23 @@ img {
   border-radius: var(--radius);
   margin-bottom: 1rem;
 }
-h4 {
+.list-view h4 {
   margin-bottom: 0.5rem;
 }
-.price {
+.list-view .price {
   color: var(--clr-primary-6);
   margin-bottom: 0.75rem;
 }
-p {
+.list-view p {
   max-width: 45em;
   margin-bottom: 1rem;
 }
-.btn {
+.list-view .btn {
   font-size: 0.5rem;
   padding: 0.25rem 0.5rem;
 }
 @media (min-width: 992px) {
-  article {
+  .list-view article {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 2rem;
