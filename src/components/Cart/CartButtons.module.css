@@ -23,6 +23,7 @@
 .cart-container svg {
   height: 1.6rem;
   margin-left: 5px;
+  fill: var(--clr-grey-1);
 }
 .cart-value {
   position: absolute;

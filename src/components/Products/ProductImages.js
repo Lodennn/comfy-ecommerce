@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import classes from "./ProductImages.module.css";
 
-const ProductImages = ({ images }) => {
+const ProductImages = ({ images = [{ url: "" }] }) => {
   const [mainImage, setMainImage] = useState(images[0]);
+  console.log(mainImage);
 
   const getImageSrc = (img) => {
     setMainImage(img);
   };
   return (
     <section>
-      <img src={mainImage.url} alt="main image" className={classes.main} />
+      {<img src={mainImage.url} alt="main image" className={classes.main} />}
       <div className={classes.gallery}>
-        {images.map((img) => {
+        {images.map((img, index) => {
           const { id, url, filename, width, height } = img;
           return (
             <img
               key={id}
-              className={url === mainImage.url && `${classes.active}`}
+              className={url === mainImage.url ? `${classes.active}` : null}
               src={url}
               alt={filename}
               width={width}

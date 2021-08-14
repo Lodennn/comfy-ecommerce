@@ -3,6 +3,10 @@
   align-items: center;
   margin-bottom: 0.5rem;
 }
+.stars > div {
+  margin-left: 0.5rem;
+  margin-bottom: 0;
+}
 span {
   color: #ffb900;
   font-size: 1rem;
@@ -10,5 +14,4 @@ span {
 }
 p {
   margin-left: 0.5rem;
-  margin-bottom: 0;
 }
