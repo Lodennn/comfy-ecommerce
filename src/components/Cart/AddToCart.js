@@ -8,11 +8,29 @@ import classes from "./AddToCart.module.css";
 
 const AddToCart = (props) => {
   const { id, stock, colors } = props.product;
+
   const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
   const addActiveClassToColor = (color) => {
     setMainColor(color);
     console.log(mainColor);
   };
+
+  const increase = () => {
+    setAmount((state) => {
+      if (state >= stock) return state;
+      return state + 1;
+    });
+  };
+
+  const decrease = () => {
+    setAmount((state) => {
+      if (state === 1) return state;
+      return state - 1;
+    });
+  };
+
   return (
     <section className={classes["add-to-cart"]}>
       <div className={classes.colors}>
@@ -33,6 +51,16 @@ const AddToCart = (props) => {
             );
           })}
         </div>
+      </div>
+      <div className={classes["btn-container"]}>
+        <AmountButtons
+          amount={amount}
+          increase={increase}
+          decrease={decrease}
+        />
+        <Link to="/cart" className="btn">
+          Add to cart
+        </Link>
       </div>
     </section>
   );

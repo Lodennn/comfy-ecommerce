@@ -5,10 +5,10 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
 }
-h2 {
+.amount-btn h2 {
   margin-bottom: 0;
 }
-button {
+.amount-btn button {
   background: transparent;
   border-color: transparent;
   cursor: pointer;
@@ -18,7 +18,4 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-h2 {
-  margin-bottom: 0;
 }
