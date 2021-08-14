@@ -4,9 +4,38 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { useCartContext } from "../../context/cart_context";
 import AmountButtons from "../UI/AmountButtons";
+import classes from "./AddToCart.module.css";
 
-const AddToCart = () => {
-  return <h4>addToCart </h4>;
+const AddToCart = (props) => {
+  const { id, stock, colors } = props.product;
+  const [mainColor, setMainColor] = useState(colors[0]);
+  const addActiveClassToColor = (color) => {
+    setMainColor(color);
+    console.log(mainColor);
+  };
+  return (
+    <section className={classes["add-to-cart"]}>
+      <div className={classes.colors}>
+        <span> colors : </span>
+        <div>
+          {colors.map((color, index) => {
+            return (
+              <button
+                key={index}
+                className={`${classes["color-btn"]} ${
+                  color === mainColor ? classes.active : null
+                }`}
+                style={{ background: color }}
+                onClick={addActiveClassToColor.bind(null, color)}
+              >
+                {color === mainColor ? <FaCheck /> : null}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 // const Wrapper = styled.section`
