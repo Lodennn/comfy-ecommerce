@@ -1,22 +1,26 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import classes from "./ProductImages.module.css";
 
 const ProductImages = ({ images = [{ url: "" }] }) => {
-  const [mainImage, setMainImage] = useState(images[0]);
-  console.log(mainImage);
+  const [mainImage, setMainImage] = useState("");
 
   const getImageSrc = (img) => {
     setMainImage(img);
   };
   return (
     <section>
-      {<img src={mainImage.url} alt="main image" className={classes.main} />}
+      <img
+        src={mainImage ? mainImage.url : images[0].url}
+        alt="main image"
+        className={classes.main}
+      />
       <div className={classes.gallery}>
         {images.map((img, index) => {
           const { id, url, filename, width, height } = img;
           return (
             <img
-              key={id}
+              key={index}
               className={url === mainImage.url ? `${classes.active}` : null}
               src={url}
               alt={filename}

@@ -20,21 +20,7 @@ const SingleProductPage = () => {
   const dispatch = useDispatch();
 
   const {
-    product: {
-      category,
-      colors,
-      company,
-      description,
-      featured,
-      images,
-      name,
-      price,
-      reviews,
-      shipping,
-      stars,
-      stock,
-      id: sku,
-    },
+    product,
     httpData: { isLoading, error },
   } = useSelector((state) => state.product);
 
@@ -55,32 +41,32 @@ const SingleProductPage = () => {
 
   return (
     <main>
-      <PageHero title={name} product />
+      <PageHero title={product.name} product />
       <div className="section section-center page">
         <Link to="/products" className="btn">
           back to products
         </Link>
         <div className={classes["product-center"]}>
-          {images && <ProductImages images={images} />}
+          <ProductImages images={product.images} />
           <section className="content">
-            <h2>{name}</h2>
-            <Stars stars={stars} reviews={reviews} />
-            <h5 className={classes.price}>{formatPrice(price)}</h5>
-            <p className={classes.desc}>{description}</p>
+            <h2>{product.name}</h2>
+            <Stars stars={product.stars} reviews={product.reviews} />
+            <h5 className={classes.price}>{formatPrice(product.price)}</h5>
+            <p className={classes.desc}>{product.description}</p>
             <p className={classes.info}>
               <span>Available : </span>
-              {stock > 0 ? "In stock" : "out of stock"}
+              {product.stock > 0 ? "In stock" : "out of stock"}
             </p>
             <p className={classes.info}>
               <span>SKU : </span>
-              {sku}
+              {product.id}
             </p>
             <p className={classes.info}>
               <span>Brand : </span>
-              {company}
+              {product.company}
             </p>
             <hr />
-            {stock > 0 && <AddToCart />}
+            {product.stock > 0 && <AddToCart product={product} />}
           </section>
         </div>
       </div>
