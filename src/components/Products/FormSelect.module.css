@@ -1,0 +1,16 @@
+@media (max-width: 576px) {
+  .sort-input label {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+}
+.sort-input {
+  border-color: transparent;
+  font-size: 1rem;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+}
+.sort-input label {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
