@@ -1,9 +1,39 @@
 import React from "react";
-import { useFilterContext } from "../../context/filter_context";
 import { BsFillGridFill, BsList } from "react-icons/bs";
-import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { filterActions } from "../../store/filter-slice";
+import FormSelect from "./FormSelect";
+import classes from "./Sort.module.css";
+
 const Sort = () => {
-  return <h4>sort </h4>;
+  const dispatch = useDispatch();
+  const toggleProductsView = () => {
+    dispatch(filterActions.toggleView());
+  };
+  const { filteredProducts, gridView } = useSelector((state) => state.filter);
+  return (
+    <section className={classes.sort}>
+      <div className={classes["btn-container"]}>
+        <button
+          onClick={toggleProductsView}
+          type="button"
+          className={`${!gridView ? classes.active : null}`}
+        >
+          <BsFillGridFill />
+        </button>
+        <button
+          onClick={toggleProductsView}
+          type="button"
+          className={`${gridView ? classes.active : null}`}
+        >
+          <BsList />
+        </button>
+      </div>
+      <p>{filteredProducts.length} products found</p>
+      <hr />
+      <FormSelect products={filteredProducts} />
+    </section>
+  );
 };
 
 // const Wrapper = styled.section`

@@ -14,7 +14,7 @@
   .btn-container {
     width: 50px;
   }
-  label {
+  .sort-input label {
     display: inline-block;
     margin-right: 0.5rem;
   }
@@ -24,7 +24,7 @@
     column-gap: 2rem;
   }
 }
-p {
+.sort p {
   text-transform: capitalize;
   margin-bottom: 0;
 }
@@ -60,7 +60,7 @@ p {
   text-transform: capitalize;
   padding: 0.25rem 0.5rem;
 }
-label {
+.sort-input label {
   font-size: 1rem;
   text-transform: capitalize;
 }

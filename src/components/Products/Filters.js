@@ -1,11 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useFilterContext } from "../../context/filter_context";
 import { getUniqueValues, formatPrice } from "../../utils/helpers";
 import { FaCheck } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { filterActions } from "../../store/filter-slice";
 
 const Filters = () => {
-  return <h4>filters</h4>;
+  const dispatch = useDispatch();
+  const {
+    filters: {
+      text,
+      company,
+      category,
+      color,
+      minPrice,
+      maxPrice,
+      price,
+      shipping,
+    },
+  } = useSelector((state) => state.filter);
+
+  const updateFiltersValue = (e) => {
+    dispatch(
+      filterActions.updateFilters({
+        name: e.target.name,
+        value: e.target.value,
+      })
+    );
+  };
+
+  return (
+    <section>
+      <div className="content">
+        <form onSubmit={() => {}}>
+          {/* search input */}
+          <div className="form-control">
+            <input
+              type="text"
+              name="text"
+              placeholder="search"
+              className="search-input"
+              value={text}
+              onChange={updateFiltersValue}
+            />
+          </div>
+          {/* search input */}
+        </form>
+      </div>
+    </section>
+  );
 };
 
 // const Wrapper = styled.section`

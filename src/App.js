@@ -16,11 +16,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsData } from "./store/products-slice";
 
 function App() {
+  const { sort, filteredProducts } = useSelector((state) => state.filter);
+  console.log(sort);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProductsData());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(filterActions.sortBy(sort));
+  }, [filteredProducts, sort, dispatch]);
 
   return (
     <BrowserRouter>
