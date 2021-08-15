@@ -19,7 +19,6 @@ function App() {
   const { sort, filteredProducts, filters } = useSelector(
     (state) => state.filter
   );
-  console.log(sort);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useFilterContext } from "../../context/filter_context";
 import { getUniqueValues, formatPrice } from "../../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { filterActions } from "../../store/filter-slice";
+import classes from "./Filters.module.css";
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -23,36 +23,122 @@ const Filters = () => {
   } = useSelector((state) => state.filter);
 
   const updateFiltersValue = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    if (name === "category") {
+      value = e.target.textContent;
+    }
+    if (name === "color") {
+      value = e.target.dataset.color;
+    }
     dispatch(
       filterActions.updateFilters({
         name: e.target.name,
-        value: e.target.value,
+        value,
       })
     );
   };
 
   const categories = getUniqueValues(allProducts, "category");
   const companies = getUniqueValues(allProducts, "company");
-  const colors = getUniqueValues(allProducts, "colors");
-
-  console.log(colors);
+  const [allColors, ...colors] = getUniqueValues(allProducts, "colors");
 
   return (
     <section>
-      <div className="content">
+      <div className={classes.content}>
         <form onSubmit={() => {}}>
           {/* search input */}
-          <div className="form-control">
+          <div className={classes["form-control"]}>
             <input
               type="text"
               name="text"
               placeholder="search"
-              className="search-input"
+              className={classes["search-input"]}
               value={text}
               onChange={updateFiltersValue}
             />
           </div>
           {/* search input */}
+
+          {/* {categories} */}
+          <div className={classes["form-control"]}>
+            <h5>category</h5>
+            <div>
+              {categories.map((cat, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={updateFiltersValue}
+                    name="category"
+                    type="button"
+                    className={`${
+                      cat === category.toLowerCase() ? classes.active : null
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* {categories} */}
+
+          {/* {companies} */}
+          <div className={classes["form-control"]}>
+            <h5>company</h5>
+            <select
+              className={classes.company}
+              name="company"
+              onChange={updateFiltersValue}
+            >
+              {companies.map((comp, index) => {
+                return (
+                  <option key={index} value={comp}>
+                    {comp}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {/* {companies} */}
+
+          {/* {colors} */}
+          <div className={classes["form-control"]}>
+            <h5>color</h5>
+            <div className={classes.colors}>
+              <button
+                type="button"
+                name="color"
+                data-color="all"
+                className={`${classes["all-btn"]} ${
+                  allColors === color ? classes.active : null
+                }`}
+                onClick={updateFiltersValue}
+              >
+                {allColors}
+              </button>
+
+              {colors.map((col, index) => {
+                return (
+                  <button
+                    key={index}
+                    className={`${classes["color-btn"]} ${
+                      col === color ? classes.active : null
+                    }`}
+                    type="button"
+                    name="color"
+                    data-color={col}
+                    style={{ backgroundColor: col }}
+                    onClick={updateFiltersValue}
+                  >
+                    {col === color ? <FaCheck /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* {colors} */}
         </form>
       </div>
     </section>

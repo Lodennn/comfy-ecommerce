@@ -34,7 +34,6 @@ const filterSlice = createSlice({
     },
     sortBy(state, action) {
       if (action.payload === "price-lowest") {
-        console.log(action.payload);
         state.sort = action.payload;
         state.filteredProducts = state.filteredProducts.sort(
           (a, b) => a.price - b.price
@@ -60,10 +59,9 @@ const filterSlice = createSlice({
       }
     },
     updateFilters(state, action) {
+      console.log("FILTERED");
       const { name, value } = action.payload;
-      console.log(name, value);
       state.filters = { ...state.filters, [name]: value };
-      console.log(state.filters.text);
     },
     clearFilters(state, action) {},
     loadFilters(state, action) {

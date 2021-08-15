@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 const ProductList = () => {
   const { filteredProducts, gridView } = useSelector((state) => state.filter);
 
-  console.log(filteredProducts);
-
   if (filteredProducts.length <= 0) {
     return <h4>Sorry, no products matched your search</h4>;
   }
