@@ -19,6 +19,7 @@ const Filters = () => {
       price,
       shipping,
     },
+    allProducts,
   } = useSelector((state) => state.filter);
 
   const updateFiltersValue = (e) => {
@@ -29,6 +30,12 @@ const Filters = () => {
       })
     );
   };
+
+  const categories = getUniqueValues(allProducts, "category");
+  const companies = getUniqueValues(allProducts, "company");
+  const colors = getUniqueValues(allProducts, "colors");
+
+  console.log(colors);
 
   return (
     <section>
