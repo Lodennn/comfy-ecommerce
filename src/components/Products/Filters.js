@@ -44,6 +44,7 @@ const Filters = () => {
         value,
       })
     );
+    dispatch(filterActions.filterProducts());
   };
 
   const resetFilters = (e) => {
@@ -100,6 +101,7 @@ const Filters = () => {
             <select
               className={classes.company}
               name="company"
+              value={company}
               onChange={updateFiltersValue}
             >
               {companies.map((comp, index) => {
