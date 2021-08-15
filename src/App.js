@@ -16,7 +16,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsData } from "./store/products-slice";
 
 function App() {
-  const { sort, filteredProducts } = useSelector((state) => state.filter);
+  const { sort, filteredProducts, filters } = useSelector(
+    (state) => state.filter
+  );
   console.log(sort);
   const dispatch = useDispatch();
 
@@ -25,8 +27,9 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    dispatch(filterActions.loadFilters());
     dispatch(filterActions.sortBy(sort));
-  }, [filteredProducts, sort, dispatch]);
+  }, [filteredProducts, sort, filters, dispatch]);
 
   return (
     <BrowserRouter>

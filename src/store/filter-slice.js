@@ -66,6 +66,9 @@ const filterSlice = createSlice({
       console.log(state.filters.text);
     },
     clearFilters(state, action) {},
+    loadFilters(state, action) {
+      state.filters = state.filters;
+    },
   },
 });
 
