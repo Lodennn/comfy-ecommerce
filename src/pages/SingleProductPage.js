@@ -23,7 +23,7 @@ const SingleProductPage = () => {
     product,
     httpData: { isLoading, error },
   } = useSelector((state) => state.product);
-  console.log("product page", product.images);
+
   useEffect(() => {
     dispatch(fetchSingleProductData(productId));
   }, [productId]);

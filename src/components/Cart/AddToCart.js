@@ -5,8 +5,11 @@ import { FaCheck } from "react-icons/fa";
 import { useCartContext } from "../../context/cart_context";
 import AmountButtons from "../UI/AmountButtons";
 import classes from "./AddToCart.module.css";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart-slice";
 
 const AddToCart = (props) => {
+  const dispatch = useDispatch();
   const { id, stock, colors } = props.product;
 
   const [mainColor, setMainColor] = useState(colors[0]);
@@ -29,6 +32,17 @@ const AddToCart = (props) => {
       if (state === 1) return state;
       return state - 1;
     });
+  };
+
+  const addProductToCart = () => {
+    dispatch(
+      cartActions.addToCart({
+        id: id,
+        color: mainColor,
+        amount: amount,
+        product: props.product,
+      })
+    );
   };
 
   return (
@@ -58,7 +72,7 @@ const AddToCart = (props) => {
           increase={increase}
           decrease={decrease}
         />
-        <Link to="/cart" className="btn">
+        <Link to="/cart" className="btn" onClick={addProductToCart}>
           Add to cart
         </Link>
       </div>

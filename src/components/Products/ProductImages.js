@@ -3,7 +3,6 @@ import classes from "./ProductImages.module.css";
 
 const ProductImages = ({ images = [] }) => {
   const [mainImage, setMainImage] = useState(images[0]);
-  console.log(mainImage);
 
   const getImageSrc = (img) => {
     setMainImage(img);
