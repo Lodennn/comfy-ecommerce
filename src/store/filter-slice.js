@@ -11,11 +11,13 @@ const initialState = {
     category: "all",
     color: "all",
     minPrice: 0,
-    maxPrice: "",
-    price: "",
+    maxPrice: 0,
+    price: 0,
     shipping: false,
   },
 };
+
+// let maxPrice = 0;
 
 const filterSlice = createSlice({
   name: "filter",
@@ -61,9 +63,20 @@ const filterSlice = createSlice({
     updateFilters(state, action) {
       console.log("FILTERED");
       const { name, value } = action.payload;
+      console.log(name, value);
       state.filters = { ...state.filters, [name]: value };
     },
-    clearFilters(state, action) {},
+    clearFilters(state, action) {
+      state.filters = {
+        ...state.filters,
+        text: "",
+        company: "all",
+        category: "all",
+        color: "all",
+        price: state.filters.maxPrice,
+        shipping: false,
+      };
+    },
     loadFilters(state, action) {
       state.filters = state.filters;
     },

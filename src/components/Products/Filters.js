@@ -23,8 +23,7 @@ const Filters = () => {
   } = useSelector((state) => state.filter);
 
   const updateFiltersValue = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
+    let { name, value } = e.target;
 
     if (name === "category") {
       value = e.target.textContent;
@@ -32,12 +31,23 @@ const Filters = () => {
     if (name === "color") {
       value = e.target.dataset.color;
     }
+    if (name === "price") {
+      value = +value;
+    }
+    if (name === "shipping") {
+      console.log(e.target.dataset.checked);
+      value = e.target.checked;
+    }
     dispatch(
       filterActions.updateFilters({
         name: e.target.name,
         value,
       })
     );
+  };
+
+  const resetFilters = (e) => {
+    dispatch(filterActions.clearFilters());
   };
 
   const categories = getUniqueValues(allProducts, "category");
@@ -139,7 +149,44 @@ const Filters = () => {
             </div>
           </div>
           {/* {colors} */}
+
+          {/* {price} */}
+          <div className={classes["form-control"]}>
+            <h5>price</h5>
+            <p className={classes.price}>{formatPrice(price)}</p>
+            <div>
+              <input
+                type="range"
+                name="price"
+                min={minPrice}
+                max={maxPrice}
+                value={price}
+                onChange={updateFiltersValue}
+              />
+            </div>
+          </div>
+          {/* {price} */}
+
+          {/* {shipping} */}
+          <div className={`${classes["form-control"]} ${classes.shipping}`}>
+            <label htmlFor="shipping">free shipping</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              onChange={updateFiltersValue}
+              checked={shipping}
+            />
+          </div>
+          {/* {shipping} */}
         </form>
+        <button
+          type="button"
+          className={classes["clear-btn"]}
+          onClick={resetFilters}
+        >
+          clear filters
+        </button>
       </div>
     </section>
   );

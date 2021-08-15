@@ -86,6 +86,9 @@ h5 {
   column-gap: 0.5rem;
   font-size: 1rem;
 }
+.shipping input {
+  margin-top: 4px;
+}
 .clear-btn {
   background: var(--clr-red-dark);
   color: var(--clr-white);
