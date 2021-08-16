@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import classes from "./AmountButton.module.css";
+import classes from "./AmountButtons.module.css";
 
 const AmountButtons = (props) => {
   return (

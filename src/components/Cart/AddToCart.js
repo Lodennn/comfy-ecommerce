@@ -66,13 +66,17 @@ const AddToCart = (props) => {
           })}
         </div>
       </div>
-      <div className="btn-container">
+      <div className={`btn-container ${classes["btn-container"]}`}>
         <AmountButtons
           amount={amount}
           increase={increase}
           decrease={decrease}
         />
-        <Link to="/cart" className="btn" onClick={addProductToCart}>
+        <Link
+          to="/cart"
+          className={`btn ${classes.btn}`}
+          onClick={addProductToCart}
+        >
           Add to cart
         </Link>
       </div>

@@ -1,8 +1,8 @@
-.cart-column {
+.cart-columns {
   display: none;
 }
 @media (min-width: 776px) {
-  .cart-column {
+  .cart-columns {
     display: block;
   }
   .content {

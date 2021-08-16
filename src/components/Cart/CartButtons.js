@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sidebarActions } from "../../store/sidebar";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import classes from "./CartButtons.module.css";
 
 const CartButtons = (props) => {
+  const { totalItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const closeSidebar = () => {
     dispatch(sidebarActions.toggleSidebar());
@@ -16,7 +17,7 @@ const CartButtons = (props) => {
         Cart
         <span className={classes["cart-container"]}>
           <FaShoppingCart />
-          <span className={classes["cart-value"]}>12</span>
+          <span className={classes["cart-value"]}>{totalItems}</span>
         </span>
       </Link>
       <button type="button" className={classes["auth-btn"]}>
