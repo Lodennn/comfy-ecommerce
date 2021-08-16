@@ -10,7 +10,7 @@ const ProductsPage = () => {
     <main>
       <PageHero title="products" />
       <div className="page">
-        <div className={`section-center ${classes.products}`}>
+        <div className={`section section-center ${classes.products}`}>
           <Filters />
           <div>
             <Sort />
