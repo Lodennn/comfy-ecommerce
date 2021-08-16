@@ -14,12 +14,20 @@ import FeaturedProducts from "./components/Products/FeaturedProducts";
 import { filterActions } from "./store/filter-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsData } from "./store/products-slice";
+import { cartActions } from "./store/cart-slice";
 
 function App() {
   const { sort, filteredProducts, filters } = useSelector(
     (state) => state.filter
   );
+  const { cart } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(cartActions.calculateCartTotalItems());
+    dispatch(cartActions.persistLocalStorage(cart));
+  }, [cart, dispatch]);
 
   useEffect(() => {
     dispatch(fetchProductsData());

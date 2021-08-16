@@ -8,12 +8,6 @@ import CartContent from "../components/Cart/CartContent";
 
 const CartPage = () => {
   const { cart } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(cartActions.calculateCartTotalItems());
-    dispatch(cartActions.persistLocalStorage(cart));
-  }, [cart, dispatch]);
 
   if (cart.length < 1) {
     return (
