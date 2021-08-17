@@ -8,7 +8,7 @@ const ProductImages = ({ images = [] }) => {
     setMainImage(img);
   };
   return (
-    <section>
+    <section style={{ width: "100%" }}>
       <img
         src={mainImage ? mainImage.url : images[0].url}
         alt="main preview"

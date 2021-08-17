@@ -18,3 +18,10 @@
 .clear-btn {
   background: var(--clr-black);
 }
+
+@media screen and (max-width: 775px) {
+  .link-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}

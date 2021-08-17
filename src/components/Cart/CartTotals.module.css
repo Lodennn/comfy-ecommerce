@@ -9,7 +9,7 @@
   padding: 1.5rem 3rem;
 }
 .cart-total h4,
-.cart-totalh5,
+.cart-total h5,
 .cart-total p {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -30,4 +30,19 @@
   margin-top: 1rem;
   text-align: center;
   font-weight: 700;
+}
+
+@media (max-width: 775px) {
+  .cart-total {
+    flex-direction: column;
+  }
+  .cart-total article {
+    padding: 1.5rem;
+  }
+  .cart-total article > * {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cart-total article > * span {
+    margin-left: 20px;
+  }
 }

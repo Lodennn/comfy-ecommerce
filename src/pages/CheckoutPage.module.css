@@ -7,3 +7,9 @@
 .checkout-page .empty {
   text-align: center;
 }
+
+@media (max-width: 775px) {
+  .checkout-page {
+    padding: 2rem;
+  }
+}
