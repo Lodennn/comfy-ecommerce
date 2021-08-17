@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { sidebarActions } from "../../store/sidebar";
+import { sidebarActions } from "../../store/sidebar-slice";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import classes from "./CartButtons.module.css";

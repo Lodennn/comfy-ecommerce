@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { sidebarActions } from "../../store/sidebar";
+import { sidebarActions } from "../../store/sidebar-slice";
 import logo from "../../assets/logo.svg";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import classes from "./CartPage.module.css";
 import PageHero from "../components/Layout/PageHero";
 import CartContent from "../components/Cart/CartContent";

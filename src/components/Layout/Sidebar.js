@@ -1,14 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sidebarActions } from "../../store/sidebar";
+import { sidebarActions } from "../../store/sidebar-slice";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { links } from "../../utils/constants";
 import CartButtons from "../Cart/CartButtons";
 import classes from "./Sidebar.module.css";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const Sidebar = () => {
+  const { user } = useAuth0();
+
   const isSidebarOpen = useSelector((state) => state.sidebar);
 
   const dispatch = useDispatch();
@@ -38,11 +40,13 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-          <li>
-            <Link to="/checkout" onClick={closeSidebar}>
-              checkout
-            </Link>
-          </li>
+          {user && (
+            <li>
+              <Link to="/checkout" onClick={closeSidebar}>
+                checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>
