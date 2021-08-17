@@ -1,4 +1,4 @@
-// domain/.netlify/functions/create-payment-intent
+// https://comfyecommerce.netlify.app//.netlify/functions/create-payment-intent
 require("dotenv").config();
 
 const stripe = require("stripe")(

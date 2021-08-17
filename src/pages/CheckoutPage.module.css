@@ -1,0 +1,9 @@
+.checkout-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 5rem;
+}
+.checkout-page .empty {
+  text-align: center;
+}

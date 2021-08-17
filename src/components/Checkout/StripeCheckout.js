@@ -36,7 +36,7 @@ const CheckoutForm = () => {
   const createPaymentIntent = useCallback(async () => {
     try {
       const { data } = await axios.post(
-        "/.netlify/functions/create-payment-intent",
+        "https://comfyecommerce.netlify.app/.netlify/functions/create-payment-intent",
         JSON.stringify({ cart, shippingFee, totalAmount })
       );
       console.log(data);
@@ -96,7 +96,7 @@ const CheckoutForm = () => {
     // Use your card Element with other Stripe.js APIs
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(cardElement),
+        card: elements.getElement(CardElement),
       },
     });
 
