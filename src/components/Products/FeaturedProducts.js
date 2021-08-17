@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from "react";
 import Error from "../UI/Error";
 import Loading from "../UI/Loading";
 import Product from "./Product";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import classes from "./FeaturedProducts.module.css";
 
 const FeaturedProducts = () => {
@@ -34,28 +32,5 @@ const FeaturedProducts = () => {
     </section>
   );
 };
-
-// const Wrapper = styled.section`
-//   background: var(--clr-grey-10);
-//   .featured {
-//     margin: 4rem auto;
-//     display: grid;
-//     gap: 2.5rem;
-//     img {
-//       height: 225px;
-//     }
-//   }
-//   .btn {
-//     display: block;
-//     width: 148px;
-//     margin: 0 auto;
-//     text-align: center;
-//   }
-//   @media (min-width: 576px) {
-//     .featured {
-//       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-//     }
-//   }
-// `;
 
 export default FeaturedProducts;

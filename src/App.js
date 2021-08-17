@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
 import Sidebar from "./components/Layout/Sidebar";
 import Footer from "./components/Layout/Footer";
@@ -10,13 +10,15 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProductsPage from "./pages/ProductsPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import ErrorPage from "./pages/ErrorPage";
-import FeaturedProducts from "./components/Products/FeaturedProducts";
 import { filterActions } from "./store/filter-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsData } from "./store/products-slice";
 import { cartActions } from "./store/cart-slice";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+  const { user } = useAuth0();
+
   const { sort, filteredProducts, filters } = useSelector(
     (state) => state.filter
   );
@@ -53,7 +55,8 @@ function App() {
           <CartPage />
         </Route>
         <Route path="/checkout">
-          <CheckoutPage />
+          {user && <CheckoutPage />}
+          {!user && <Redirect to="/" />}
         </Route>
         <Route path="/products" exact>
           <ProductsPage />

@@ -75,7 +75,7 @@ const cartSlice = createSlice({
         }
       } else {
         if (updatedProductAmount === 1) {
-          updatedProductAmount = updatedProductAmount;
+          updatedProductAmount = 1;
         } else {
           updatedProductAmount--;
         }

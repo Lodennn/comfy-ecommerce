@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../store/cart-slice";
+import { useSelector } from "react-redux";
 import classes from "./CartPage.module.css";
 import PageHero from "../components/Layout/PageHero";
 import CartContent from "../components/Cart/CartContent";
@@ -30,15 +29,5 @@ const CartPage = () => {
     </main>
   );
 };
-
-// const Wrapper = styled.main`
-//   .empty {
-//     text-align: center;
-//     h2 {
-//       margin-bottom: 1rem;
-//       text-transform: none;
-//     }
-//   }
-// `;
 
 export default CartPage;

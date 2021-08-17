@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import GridView from "../Views/GridView";
 import ListView from "../Views/ListView";
 import { useSelector } from "react-redux";

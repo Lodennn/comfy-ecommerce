@@ -11,12 +11,12 @@ const ProductImages = ({ images = [] }) => {
     <section>
       <img
         src={mainImage ? mainImage.url : images[0].url}
-        alt="main image"
+        alt="main preview"
         className={classes.main}
       />
       <div className={classes.gallery}>
-        {images.map((img, index) => {
-          const { id, url, filename, width, height } = img;
+        {images.map((image, index) => {
+          const { url, filename, width, height } = image;
           return (
             <img
               key={index}
@@ -25,59 +25,13 @@ const ProductImages = ({ images = [] }) => {
               alt={filename}
               width={width}
               height={height}
-              onClick={getImageSrc.bind(null, img)}
+              onClick={getImageSrc.bind(null, image)}
             />
           );
         })}
       </div>
     </section>
   );
-  return "images";
 };
-
-// const Wrapper = styled.section`
-//   .main {
-//     height: 600px;
-//   }
-//   img {
-//     width: 100%;
-//     display: block;
-//     border-radius: var(--radius);
-//     object-fit: cover;
-//   }
-//   .gallery {
-//     margin-top: 1rem;
-//     display: grid;
-//     grid-template-columns: repeat(5, 1fr);
-//     column-gap: 1rem;
-//     img {
-//       height: 100px;
-//       cursor: pointer;
-//     }
-//   }
-//   .active {
-//     box-shadow: 0px 0px 0px 2px var(--clr-primary-5);
-//   }
-//   @media (max-width: 576px) {
-//     .main {
-//       height: 300px;
-//     }
-//     .gallery {
-//       img {
-//         height: 50px;
-//       }
-//     }
-//   }
-//   @media (min-width: 992px) {
-//     .main {
-//       height: 500px;
-//     }
-//     .gallery {
-//       img {
-//         height: 75px;
-//       }
-//     }
-//   }
-// `
 
 export default ProductImages;
