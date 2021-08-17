@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import { links } from "../../utils/constants";
 import CartButtons from "../Cart/CartButtons";
 import classes from "./Navbar.module.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Nav = () => {
+  const { user } = useAuth0();
   const dispatch = useDispatch();
   const toggleSidebar = () => {
     dispatch(sidebarActions.toggleSidebar());
@@ -33,6 +35,11 @@ const Nav = () => {
               </li>
             );
           })}
+          {user && (
+            <li>
+              <Link to="/checkout">checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons className={classes["cart-btn-wrapper"]} />
       </div>

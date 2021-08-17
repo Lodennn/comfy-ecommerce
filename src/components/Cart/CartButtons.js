@@ -4,8 +4,11 @@ import { sidebarActions } from "../../store/sidebar";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import classes from "./CartButtons.module.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CartButtons = (props) => {
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
+  console.log(isAuthenticated, user);
   const { totalItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const closeSidebar = () => {
@@ -20,9 +23,25 @@ const CartButtons = (props) => {
           <span className={classes["cart-value"]}>{totalItems}</span>
         </span>
       </Link>
-      <button type="button" className={classes["auth-btn"]}>
-        Login <FaUserPlus />
-      </button>
+
+      {!user && (
+        <button
+          type="button"
+          className={classes["auth-btn"]}
+          onClick={loginWithRedirect}
+        >
+          Login <FaUserPlus />
+        </button>
+      )}
+      {user && (
+        <button
+          type="button"
+          className={classes["auth-btn"]}
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          Logout <FaUserMinus />
+        </button>
+      )}
     </div>
   );
 };

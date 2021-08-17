@@ -11,8 +11,14 @@ import { Provider } from "react-redux";
 import store from "./store/index";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Auth0Provider
+    domain="dev-mgzl1auu.us.auth0.com"
+    clientId="68nBtqadh13Qtt42FMNfbs7DpFI0oqHH"
+    redirectUri={window.location.origin}
+  >
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Auth0Provider>,
   document.getElementById("root")
 );

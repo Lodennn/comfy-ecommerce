@@ -3,7 +3,7 @@
   background: var(--clr-black);
   border-radius: var(--radius);
 }
-img {
+.container img {
   width: 100%;
   display: block;
   object-fit: cover;
