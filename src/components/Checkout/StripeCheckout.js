@@ -36,7 +36,7 @@ const CheckoutForm = () => {
   const createPaymentIntent = useCallback(async () => {
     try {
       const { data } = await axios.post(
-        "https://comfyslothecommerce.netlify.app/.netlify/functions/create-payment-intent",
+        "http://localhost:4000/create-payment-intent",
         JSON.stringify({ cart, shippingFee, totalAmount })
       );
       console.log(data);
@@ -94,16 +94,16 @@ const CheckoutForm = () => {
     const cardElement = elements.getElement(CardElement);
 
     // Use your card Element with other Stripe.js APIs
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-      },
+    const payload = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
     });
 
     if (payload.error) {
       setError(`Payment failed ${payload.error.message}`);
       setProcessing(false);
     } else {
+      createPaymentIntent();
       setError(null);
       setProcessing(false);
       setSucceeded(true);

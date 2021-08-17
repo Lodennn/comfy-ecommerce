@@ -1,4 +1,4 @@
-// https://comfyecommerce.netlify.app//.netlify/functions/create-payment-intent
+// domain/.netlify/functions/create-payment-intent
 require("dotenv").config();
 
 const stripe = require("stripe")(
@@ -7,7 +7,7 @@ const stripe = require("stripe")(
 console.log("server", stripe);
 exports.handler = async function (event, context) {
   if (event.body) {
-    const { cart, shippingFee, totalAmount } = JSON.parse(event.body);
+    const { shippingFee, totalAmount } = JSON.parse(event.body);
 
     const calculateOrderAmount = () => {
       return shippingFee + totalAmount;
