@@ -36,7 +36,7 @@ const CheckoutForm = () => {
   const createPaymentIntent = useCallback(async () => {
     try {
       const { data } = await axios.post(
-        "https://comfyecommerce.netlify.app/.netlify/functions/create-payment-intent",
+        "https://comfyslothecommerce.netlify.app/.netlify/functions/create-payment-intent",
         JSON.stringify({ cart, shippingFee, totalAmount })
       );
       console.log(data);
