@@ -6,7 +6,7 @@ form.stipe-form {
   border-radius: 7px;
   padding: 40px;
 }
-input {
+.stipe-form input {
   border-radius: 6px;
   margin-bottom: 6px;
   padding: 12px;

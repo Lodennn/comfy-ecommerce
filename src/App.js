@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
 import Sidebar from "./components/Layout/Sidebar";
@@ -10,7 +10,6 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProductsPage from "./pages/ProductsPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import ErrorPage from "./pages/ErrorPage";
-import FeaturedProducts from "./components/Products/FeaturedProducts";
 import { filterActions } from "./store/filter-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsData } from "./store/products-slice";

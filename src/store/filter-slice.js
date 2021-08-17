@@ -77,7 +77,8 @@ const filterSlice = createSlice({
       state.filteredProducts = state.allProducts;
     },
     loadFilters(state, action) {
-      state.filters = state.filters;
+      const tempFilters = state.filters;
+      state.filters = tempFilters;
     },
     filterProducts(state, action) {
       const { allProducts } = state;

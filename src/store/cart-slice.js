@@ -21,7 +21,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      console.log("ADDED");
       const { id, color, amount, product } = action.payload;
       const existingProductIndex = state.cart.findIndex(
         (item) => item.id === id + color
@@ -55,7 +54,6 @@ const cartSlice = createSlice({
     },
 
     removeFromCart(state, action) {
-      console.log("REMOVED");
       state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
 
@@ -75,7 +73,7 @@ const cartSlice = createSlice({
         }
       } else {
         if (updatedProductAmount === 1) {
-          updatedProductAmount = updatedProductAmount;
+          updatedProductAmount = 1;
         } else {
           updatedProductAmount--;
         }

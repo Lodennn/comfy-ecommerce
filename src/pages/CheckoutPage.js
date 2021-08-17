@@ -1,8 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-// extra imports
-import { useCartContext } from "../context/cart_context";
-import { Link } from "react-router-dom";
+import StripeCheckout from "../components/Checkout/StripeCheckout";
 import PageHero from "../components/Layout/PageHero";
 
 const CheckoutPage = () => {
@@ -10,10 +7,9 @@ const CheckoutPage = () => {
     <main>
       <PageHero title="checkout" />
       <div className="page">
-        <h1>checkout here</h1>
+        <StripeCheckout />
       </div>
     </main>
   );
 };
-const Wrapper = styled.div``;
 export default CheckoutPage;

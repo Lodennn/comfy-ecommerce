@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { filterActions } from "../../store/filter-slice";
 import classes from "./FormSelect.module.css";
 
@@ -7,7 +7,6 @@ const FormSelect = (props) => {
   const dispatch = useDispatch();
   const onSelectChange = (e) => {
     e.preventDefault();
-    console.log(e.target.name);
     dispatch(filterActions.sortBy(e.target.value));
   };
   return (
