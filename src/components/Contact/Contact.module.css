@@ -28,6 +28,7 @@ p {
   border-top-left-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
 }
+
 .submit-btn {
   border-top-right-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
@@ -62,5 +63,17 @@ p {
 @media (min-width: 1280px) {
   .contact {
     padding: 15rem 0;
+  }
+}
+
+@media (max-width: 765px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+  .form-input {
+    border-right: 1px solid #000;
+    color: var(--clr-grey-3);
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
   }
 }

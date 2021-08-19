@@ -23,6 +23,11 @@
 @media (min-width: 776px) {
   .cart-total {
     justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .cart-total button {
+    width: 25vw;
   }
 }
 .btn {
